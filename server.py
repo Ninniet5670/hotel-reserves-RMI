@@ -9,15 +9,15 @@ class HotelMarcodaizaReserve:
         return (self.reserves)
 
     def do_reserve(self, floor:str, room:str, name:str):
-        floor, room = floor.strip(), room.strip() 
-        print(self.reserves[floor][room])
+        floor, room = int(floor.strip()), int(room.strip()) 
+        
         try:
             desired_room = self.reserves[floor][room]
         except Exception as e:
             return ('Could not find thy room to reserve')
 
         if desired_room == None:
-            desired_room = name
+            self.reserves[floor][room] = name
             return ('Reserverd thy room')
         elif desired_room == name:
             return ('You already own this room')
@@ -25,7 +25,8 @@ class HotelMarcodaizaReserve:
             return ('This room is already reserved')
 
     def cancel_reserve(self, floor:str, room:str, name:str):
-        floor, room = floor.strip(), room.strip() 
+        floor, room = int(floor.strip()), int(room.strip()) 
+        
         try:
             desired_room = self.reserves[floor][room]
         except Exception as e:
@@ -34,7 +35,7 @@ class HotelMarcodaizaReserve:
         if desired_room == None:
             return ('Not any reserves to cancel')
         elif desired_room == name:
-            desired_room = None
+            self.reserves[floor][room] = None
             return ('Reserve canceled')
         else:
             return ('You do not have permission to cancel other person reserve')
