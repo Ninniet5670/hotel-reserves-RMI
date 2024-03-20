@@ -1,48 +1,50 @@
-# Jogo de Adivinhação Multiusuário
-**Objetivo do Jogo:** O objetivo é adivinhar um número secreto gerado
-aleatoriamente pelo servidor. Este número está entre 1 e 100, inclusive.
-**Como Jogar:**
+Projeto: Sistema de Reservas de Quartos de Hotel Distribuído
 
-- O servidor gera um número aleatório entre 1 e 100 no início de cada novo jogo.
-- Os jogadores, através de seus clientes, tentam adivinhar o número enviando um palpite para o servidor.
-- O servidor responde com "Alto" se o palpite for maior que o número secreto, "Baixo" se o palpite for menor que o número secreto, e "Correto" se o palpite for igual ao número secreto.
-- Quando um jogador acerta o número, o servidor automaticamente inicia
-- um novo jogo gerando um novo número secreto.
+Neste projeto, vocês trabalharão em dupla para desenvolver um sistema distribuído de
+reservas de quartos de hotel utilizando RMI (Remote Method Invocation) ou
+comunicações equivalentes (nível de método/função). O objetivo é permitir que
+clientes possam pesquisar, reservar, modificar e cancelar reservas em um conjunto
+distribuído de hotéis de forma transparente e eficiente.
+Membro A:
+1. Desenvolvimento do Servidor de Hotéis:
+o Implementação da lógica de negócios para gerenciamento de hotéis e
+quartos.
+o Implementação dos métodos para adicionar e remover hotéis e quartos.
+o Implementação da funcionalidade de consulta de disponibilidade de
+quartos.
 
-**Regras:**
+2. Gerenciamento de Reservas:
+o Desenvolvimento das funções para processar reservas, modificações e
+cancelamentos.
+o Garantir a atomicidade e consistência das operações de reserva.
+3. Testes de Integração:
+o Desenvolvimento de testes que cobrem a integração entre o servidor de
+hotéis e as funcionalidades de reserva.
 
-1. Cada jogador pode fazer uma tentativa de adivinhação por vez, enviando
-um número entre 1 e 100.
-2. Não há limite de tentativas, mas os jogadores são encorajados a usar o
-mínimo possível de tentativas para adivinhar o número.
-3. O jogo suporta múltiplos jogadores simultaneamente. Cada jogador
-compete para ser o primeiro a adivinhar o número correto.
-4. Assim que o número é adivinhado corretamente, o servidor informa todos
-os jogadores que o jogo terminou e um novo número é gerado para
-começar outro jogo.
-5. O jogador que acertar o número é anunciado vencedor daquela rodada.
-6. Jogadores podem entrar ou sair do jogo a qualquer momento.
+Membro B:
+1. Desenvolvimento do Cliente de Reservas:
+o Implementação da interface de usuário para interação com o sistema.
+o Implementação das funcionalidades de consulta, reserva, modificação e
+cancelamento de reservas no lado do cliente.
 
-**Finalização:**
-• Os jogadores podem sair do jogo a qualquer momento digitando um
-comando específico (por exemplo, "-1").
-• O servidor continua em execução, aguardando novas conexões ou jogadas
-até ser manualmente encerrado.
-Considerações Técnicas:
-• Utilize RMI para implementar a comunicação entre o cliente e o servidor.
-• O servidor deve ser capaz de manejar múltiplas conexões de cliente
-simultaneamente sem interrupção.
-• Garanta que o servidor trate exceções apropriadamente para evitar que ele
-se torne inacessível.
+2. Segurança e Autenticação:
+o Implementação dos mecanismos de segurança para autenticação de
+usuários nas operações de modificação e cancelamento de reservas.
+o Implementação de medidas básicas de segurança na comunicação via
+RMI.
 
-<hr>
+3. Testes Unitários e de Usabilidade:
+o Desenvolvimento de testes unitários para as funcionalidades
+implementadas no cliente.
 
-Para rodar, basta:
-```
-python -m venv venv
-./venv/Scripts/activate.ps1
-!pip install Pyro4
-python -m Pyro4.naming
-python server.py
-python client.py
-```
+o Realização de testes de usabilidade para garantir uma boa experiência
+do usuário.
+
+Responsabilidades Compartilhadas:
+• Comunicação via RMI:
+o Ambos devem colaborar no estabelecimento e teste da comunicação
+RMI entre o cliente e o servidor.
+
+• Concorrência:
+o Trabalhar juntos para implementar e testar mecanismos de
+sincronização e garantir a concorrência segura e eficiente do sistema.
